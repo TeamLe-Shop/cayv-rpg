@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include <random>
 
 int main() {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -9,6 +10,12 @@ int main() {
 
     bool quit = false;
     int t = 0;
+    float cx = 0, chs = 1;
+    float cy = 0, cvs = 1;
+
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<> dis(-2.0, 2.0);
 
     while (!quit) {
         Uint32 frame_begin = SDL_GetTicks();
@@ -31,12 +38,19 @@ int main() {
 
         SDL_LockTexture(tex, NULL, &rawpx, &pitch);
         Rgb888 * pixuls = static_cast<Rgb888*>(rawpx);
+        cx += chs;
+        cy += cvs;
+        if (t % 128 == 0) {
+            chs += dis(gen);
+            cvs += dis(gen);
+        }
         for (int y = 0; y < 512; ++y) {
             for (int x = 0; x < 512; ++x) {
                 Rgb888 * pixul = &pixuls[y * 512 + x];
-                pixul->r = x ^ y + t;
-                pixul->g = x ^ y + (t * 2);
-                pixul->b = x ^ y + (t * 4);
+                const char val = (x + (char)cx) ^ (y + (char)cy);
+                pixul->r = (val * t / 128);
+                pixul->g = (val * t / 128) + x;
+                pixul->b = (val * t / 128) + y;
             }
         }
         SDL_UnlockTexture(tex);
