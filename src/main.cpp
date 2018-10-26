@@ -6,8 +6,13 @@ int main() {
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window * win;
     SDL_Renderer * ren;
-    SDL_CreateWindowAndRenderer(512, 512, 0, &win, &ren);
-    SDL_Texture * tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 512, 512);
+    SDL_DisplayMode mode;
+    SDL_GetCurrentDisplayMode(0, &mode);
+    const int W = mode.w;
+    const int H = mode.h;
+    SDL_CreateWindowAndRenderer(W, H, SDL_WINDOW_FULLSCREEN_DESKTOP, &win, &ren);
+    SDL_Texture * tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING,
+                                          W, H);
     Mix_Init(MIX_INIT_MOD);
     Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 1024);
     Mix_Music* mus = Mix_LoadMUS("herpfucks.xm");
@@ -27,6 +32,8 @@ int main() {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
+                quit = true;
+            } else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
                 quit = true;
             }
         }
@@ -49,9 +56,9 @@ int main() {
             chs += dis(gen);
             cvs += dis(gen);
         }
-        for (int y = 0; y < 512; ++y) {
-            for (int x = 0; x < 512; ++x) {
-                Rgb888 * pixul = &pixuls[y * 512 + x];
+        for (int y = 0; y < H; ++y) {
+            for (int x = 0; x < W; ++x) {
+                Rgb888 * pixul = &pixuls[y * W + x];
                 const char val = (x + (char)cx) ^ (y + (char)cy);
                 pixul->r = (val * t / 128);
                 pixul->g = (val * t / 128) + x;
