@@ -11,6 +11,7 @@ int main() {
     int t = 0;
 
     while (!quit) {
+        Uint32 frame_begin = SDL_GetTicks();
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -42,6 +43,11 @@ int main() {
 
         SDL_RenderCopy(ren, tex, NULL, NULL);
         SDL_RenderPresent(ren);
+        Uint32 time_took = SDL_GetTicks() - frame_begin;
+        const Uint32 IDEAL_FRAME_TIME_MS = 17;
+        if (time_took < IDEAL_FRAME_TIME_MS) {
+            SDL_Delay(IDEAL_FRAME_TIME_MS - time_took);
+        }
         t++;
     }
 
