@@ -1,5 +1,6 @@
 #include "SDL.h"
 #include <random>
+#include <SDL_mixer.h>
 
 int main() {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -7,6 +8,10 @@ int main() {
     SDL_Renderer * ren;
     SDL_CreateWindowAndRenderer(512, 512, 0, &win, &ren);
     SDL_Texture * tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, 512, 512);
+    Mix_Init(MIX_INIT_MOD);
+    Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 1024);
+    Mix_Music* mus = Mix_LoadMUS("herpfucks.xm");
+    Mix_PlayMusic(mus, -1);
 
     bool quit = false;
     int t = 0;
