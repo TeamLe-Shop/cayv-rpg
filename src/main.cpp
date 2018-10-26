@@ -33,9 +33,9 @@ int main() {
         for (int y = 0; y < 512; ++y) {
             for (int x = 0; x < 512; ++x) {
                 Rgb888 * pixul = &pixuls[y * 512 + x];
-                pixul->r = x + t;
-                pixul->g = y + t;
-                pixul->b = x + y + t;
+                pixul->r = x ^ y + t;
+                pixul->g = x ^ y + (t * 2);
+                pixul->b = x ^ y + (t * 4);
             }
         }
         SDL_UnlockTexture(tex);
