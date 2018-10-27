@@ -77,12 +77,12 @@ int main() {
                 SDL_RenderCopy(ren, tex, &grass, &dst);
             }
         }
+        SDL_Rect dst = {scpos.x, scpos.y, 32, 32};
+        SDL_RenderCopy(ren, tex, &smileychan, &dst);
         for (auto f : flowers) {
             SDL_Rect dst = {f.x * 32, f.y * 32, 32, 32};
             SDL_RenderCopy(ren, tex, &flower, &dst);
         }
-        SDL_Rect dst = {scpos.x, scpos.y, 32, 32};
-        SDL_RenderCopy(ren, tex, &smileychan, &dst);
         SDL_RenderPresent(ren);
         Uint32 time_took = SDL_GetTicks() - frame_begin;
         const Uint32 IDEAL_FRAME_TIME_MS = 17;
