@@ -1,5 +1,4 @@
 cmake_minimum_required (VERSION 3.1)
-cmake_policy(SET CMP0072 NEW)
 project(cayvrpg)
 
 if(OSX)
@@ -14,8 +13,6 @@ endif()
 
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake/Modules)
-find_package(OpenGL REQUIRED)
-include_directories(${OPENGL_INCLUDE_DIR})
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 find_package(SDL2_mixer REQUIRED)
@@ -23,4 +20,4 @@ include_directories(${SDLMIXER_INCLUDE_DIR})
 
 add_executable(cayv src/main.cpp)
 
-target_link_libraries(cayv ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY})
+target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY})
