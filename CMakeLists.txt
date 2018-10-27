@@ -17,7 +17,9 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 find_package(SDL2_mixer REQUIRED)
 include_directories(${SDLMIXER_INCLUDE_DIR})
+find_package(SDL2_image REQUIRED)
+include_directories(${SDLIMAGE_INCLUDE_DIR})
 
 add_executable(cayv src/main.cpp)
 
-target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY})
+target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY})
