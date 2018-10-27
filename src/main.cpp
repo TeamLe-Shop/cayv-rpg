@@ -93,6 +93,8 @@ int main() {
 
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
+    IMG_Quit();
+    Mix_Quit();
     SDL_Quit();
     return 0;
 }
