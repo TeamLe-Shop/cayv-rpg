@@ -11,7 +11,7 @@ int main() {
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window * win;
     SDL_Renderer * ren;
-    SDL_CreateWindowAndRenderer(640, 480, SDL_WINDOW_SHOWN, &win, &ren);
+    SDL_CreateWindowAndRenderer(640, 480, SDL_WINDOW_FULLSCREEN_DESKTOP, &win, &ren);
     SDL_SetWindowTitle(win, "Cayv RPG - Autismo Fields");
     SDL_RenderSetLogicalSize(ren, 320, 240);
     Mix_Init(MIX_INIT_MOD);
