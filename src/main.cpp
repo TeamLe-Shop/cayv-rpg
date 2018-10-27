@@ -17,6 +17,10 @@ int main() {
     Mix_Init(MIX_INIT_MOD);
     Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 1024);
     Mix_Music* mus = Mix_LoadMUS("autismofields.xm");
+    if (mus == NULL) {
+        std::cout << "Music load fail" << std::endl;
+        return 1;
+    }
     Mix_PlayMusic(mus, -1);
     if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
         std::cout << "Epic fail." << std::endl;
