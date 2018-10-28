@@ -6,7 +6,7 @@ using namespace cayv;
 
 int main()
 {
-    Window w = Window("44 Flies On Leashes", 2, -1, false);
+    Window w = Window("44 Flies On Leashes", 640, 480, false);
     w.DrawLoop();
     return 0;
 }
