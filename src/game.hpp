@@ -19,7 +19,7 @@ public:
 
     Window* window;
 private:
-    Scene* currentscene;
+    Scene* currentscene = nullptr;
     std::vector<Scene*> scenes;
 };
 
