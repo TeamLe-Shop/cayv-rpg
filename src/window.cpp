@@ -27,13 +27,13 @@ Window::Window(std::string title, int w, int h, bool fullscreen)
 }
 
 Window::Window(std::string title, int w, int h, bool fulls, int rw, int rh)
+    : Window(title, w, h, fulls)
 {
     if (rw < 1 || rh < 1) {
         log(SEVERE, "Invalid renderer dimensions");
         exit(1);
     }
 
-    Window(title, w, h, fulls);
     SDL_RenderSetLogicalSize(renderer, rw, rh);
 }
 
