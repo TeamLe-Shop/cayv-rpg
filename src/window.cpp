@@ -1,6 +1,7 @@
 #include "window.hpp"
 
 #include "log.hpp"
+#include "scene.hpp"
 
 #include "SDL.h"
 
@@ -36,22 +37,11 @@ Window::Window(std::string title, int w, int h, bool fulls, int rw, int rh)
     SDL_RenderSetLogicalSize(renderer, rw, rh);
 }
 
-void Window::DrawLoop()
+void Window::Draw(Scene* s)
 {
-    bool quit = false;
-    while (!quit) {
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
-        }
-
-        SDL_RenderClear(renderer);
-        SDL_RenderPresent(renderer);
-
-        SDL_Delay(16);
-    }
+    SDL_RenderClear(renderer);
+    s->Draw();
+    SDL_RenderPresent(renderer);
 }
 
 Window::~Window()
