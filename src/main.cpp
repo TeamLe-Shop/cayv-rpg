@@ -74,7 +74,6 @@ private:
 int main()
 {
     Window* w = new Window("Simmer softly something's boilin", 640, 480, false, 320, 240);
-    w->max_fps = 60;
 
     if (Mix_Init(MIX_INIT_MOD) != MIX_INIT_MOD) {
         std::cerr << "Mix_Init fail, yet still twerks... Ok." << std::endl;

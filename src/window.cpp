@@ -10,7 +10,8 @@
 
 namespace cayv {
 
-Window::Window(std::string title, int w, int h, bool fullscreen)
+Window::Window(std::string title, int w, int h, bool fullscreen) :
+    max_fps(60)
 {
     if (w < 1 || h < 1) {
         log(SEVERE, "Invalid window dimensions");
