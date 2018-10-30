@@ -6,8 +6,7 @@
 #include "game.hpp"
 #include "scene.hpp"
 #include "init.hpp"
-
-#include <iostream>
+#include "log.hpp"
 
 using namespace cayv;
 
@@ -29,7 +28,7 @@ public:
     AutismoFields(std::string name, Game* g) : Scene(name, g) {
         tex = IMG_LoadTexture(g->window->renderer, "res/gfx_desu.png");
         if (tex == nullptr) {
-            std::cerr << "HOLY SHIT, FAILED TO LOAD THE TEXTURE! ABORT!" << std::endl;
+            log(SEVERE, "HOLY SHIT, FAILED TO LOAD THE TEXTURE! ABORT!");
             abort();
         }
     }
@@ -81,7 +80,7 @@ int main()
 
     Mix_Music* mus = Mix_LoadMUS("autismofields.xm");
     if (mus == NULL) {
-        std::cout << "Music load fail" << std::endl;
+        log(SEVERE, "Music load fail");
         return 1;
     }
     Mix_PlayMusic(mus, -1);
