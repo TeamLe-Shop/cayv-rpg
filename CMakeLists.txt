@@ -42,6 +42,9 @@ include_directories(${SDLMIXER_INCLUDE_DIR})
 find_package(SDL2_image REQUIRED)
 include_directories(${SDLIMAGE_INCLUDE_DIR})
 
+# We wanna include "kek.hpp" instead of "../../../kek.hpp" when we're in the deep
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 add_executable(cayv src/main.cpp src/log.cpp src/window.cpp src/game.cpp
                     src/scene.cpp src/init.cpp src/scenes/autismofields.cpp)
 

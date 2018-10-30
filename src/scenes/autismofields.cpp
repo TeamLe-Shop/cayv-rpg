@@ -1,8 +1,8 @@
 #include "autismofields.hpp"
 
 #include "SDL_image.h"
-#include "../log.hpp"
-#include "../window.hpp"
+#include "log.hpp"
+#include "window.hpp"
 
 namespace cayv {
 

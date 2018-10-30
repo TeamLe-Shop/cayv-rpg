@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../scene.hpp"
+#include "scene.hpp"
 
 #include "SDL.h"
 #include "SDL_mixer.h"
