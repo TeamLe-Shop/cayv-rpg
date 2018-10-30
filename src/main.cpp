@@ -14,13 +14,17 @@ int main()
     if (!init()) {
         return 1;
     }
-    Window w("Simmer softly something's boilin", 640, 480, false, 320, 240);
+    // New scope to run shit to make sure the destructors run
+    {
+        Window w("Simmer softly something's boilin", 640, 480, false, 320, 240);
 
-    Game g(&w);
-    g.AddScene(std::make_unique<AutismoFields>("test", &g));
-    g.SetScene("test");
-    g.Cycle();
+        Game g(&w);
+        g.AddScene(std::make_unique<AutismoFields>("test", &g));
+        g.SetScene("test");
+        g.Cycle();
+    }
 
+    // This should run last, after everything using SDL has been destroyed.
     cleanup();
 
     return 0;
