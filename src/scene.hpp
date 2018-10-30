@@ -8,6 +8,7 @@ namespace cayv {
 class Scene {
 public:
     Scene(std::string name, Game* g);
+    virtual ~Scene();
 
     virtual void OnEnter();
     virtual void OnLeave();
