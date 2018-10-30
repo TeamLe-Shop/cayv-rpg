@@ -2,7 +2,8 @@
 
 namespace cayv {
 
-Scene::Scene(std::string n, Game* g) { name = n; game = g; }
+Scene::Scene(std::string n, Game* g) :
+    name(n), game(g) {}
 Scene::~Scene() {}
 
 void Scene::OnEnter() {}
