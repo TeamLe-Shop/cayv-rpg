@@ -8,9 +8,9 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     set(USING_CLANG TRUE)
 endif()
 
-# For GCC and Clang, enable C++11
+# For GCC and Clang, enable C++14
 if(USING_GCC OR USING_CLANG OR OSX)
-  add_compile_options(-std=c++11)
+  add_compile_options(-std=c++14)
   if(SANITIZE)
     add_compile_options(-fsanitize=${SANITIZE})
     set(CMAKE_EXE_LINKER_FLAGS
