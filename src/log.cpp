@@ -15,4 +15,4 @@ void log(std::string l, std::string fmt, ...)
     va_end(v);
 }
 
-};
+}

@@ -51,4 +51,4 @@ Window::~Window()
     SDL_Quit();
 }
 
-};
+}

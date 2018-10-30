@@ -23,4 +23,4 @@ private:
     std::vector<Scene*> scenes;
 };
 
-};
+}

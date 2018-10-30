@@ -22,4 +22,4 @@ public:
     SDL_Renderer* renderer;
 };
 
-};
+}

@@ -10,4 +10,4 @@ const std::string SEVERE = "SEVERE";
 
 void log(std::string loglevel, std::string fmt, ...);
 
-};
+}

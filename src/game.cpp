@@ -60,4 +60,4 @@ void Game::SetScene(std::string name)
     currentscene = x;
 }
 
-};
+}
