@@ -32,7 +32,7 @@ public:
             abort();
         }
     }
-    void Draw()
+    void Draw() override
     {
         SDL_Renderer * ren = game->window->renderer;
         SDL_Rect grass = {0, 0, 32, 32};
@@ -51,7 +51,7 @@ public:
             SDL_RenderCopy(ren, tex, &flower, &dst);
         }
     }
-    void Logic() {
+    void Logic() override {
         const Uint8 *state = SDL_GetKeyboardState(NULL);
         if (state[SDL_SCANCODE_LEFT]) {
             scpos.x -= 2;
