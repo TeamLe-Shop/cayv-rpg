@@ -79,23 +79,12 @@ int main()
     }
     Window w("Simmer softly something's boilin", 640, 480, false, 320, 240);
 
-    if (Mix_Init(MIX_INIT_MOD) != MIX_INIT_MOD) {
-        std::cerr << "Mix_Init fail, yet still twerks... Ok." << std::endl;
-    }
-    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
-        std::cerr << "HOLY SHIT, CAN'T OPEN AUDIO! BAIL!" << std::endl;
-        return 1;
-    }
     Mix_Music* mus = Mix_LoadMUS("autismofields.xm");
     if (mus == NULL) {
         std::cout << "Music load fail" << std::endl;
         return 1;
     }
     Mix_PlayMusic(mus, -1);
-    if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
-        std::cout << "Epic fail." << std::endl;
-        return 1;
-    }
 
     Game g(&w);
     g.AddScene(new AutismoFields("test", &g));
