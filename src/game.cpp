@@ -33,17 +33,17 @@ void Game::Cycle()
     }
 }
 
-void Game::AddScene(Scene* s)
+void Game::AddScene(std::unique_ptr<Scene> s)
 {
-    scenes.push_back(s);
+    scenes.push_back(std::move(s));
 }
 
 void Game::SetScene(std::string name)
 {
     Scene* x = nullptr;
-    for (auto s : scenes) {
+    for (auto & s : scenes) {
         if (name == s->name) {
-            x = s;
+            x = s.get();
             break;
         }
     }

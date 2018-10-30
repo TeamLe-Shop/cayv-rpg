@@ -27,6 +27,11 @@ AutismoFields::AutismoFields(std::string name, Game* g) : Scene(name, g) {
     Mix_PlayMusic(mus, -1);
 }
 
+AutismoFields::~AutismoFields() {
+    SDL_DestroyTexture(tex);
+    Mix_FreeMusic(mus);
+}
+
 void AutismoFields::Draw() {
     SDL_Renderer * ren = game->window->renderer;
     SDL_Rect grass = {0, 0, 32, 32};

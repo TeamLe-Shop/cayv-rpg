@@ -15,6 +15,7 @@ class AutismoFields : public Scene
 {
 public:
     AutismoFields(std::string name, Game* g);
+    ~AutismoFields();
     void Draw() override;
     void Logic() override;
 private:

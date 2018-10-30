@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "window.hpp"
 #include "game.hpp"
 #include "scene.hpp"
@@ -15,7 +17,7 @@ int main()
     Window w("Simmer softly something's boilin", 640, 480, false, 320, 240);
 
     Game g(&w);
-    g.AddScene(new AutismoFields("test", &g));
+    g.AddScene(std::make_unique<AutismoFields>("test", &g));
     g.SetScene("test");
     g.Cycle();
 

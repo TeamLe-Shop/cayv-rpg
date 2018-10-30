@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 namespace cayv {
 
@@ -12,7 +13,7 @@ class Game {
 public:
     explicit Game(Window* w);
 
-    void AddScene(Scene* s);
+    void AddScene(std::unique_ptr<Scene> s);
     void SetScene(std::string name);
 
     void Cycle();
@@ -20,7 +21,7 @@ public:
     Window* window;
 private:
     Scene* currentscene = nullptr;
-    std::vector<Scene*> scenes;
+    std::vector<std::unique_ptr<Scene>> scenes;
 };
 
 }
