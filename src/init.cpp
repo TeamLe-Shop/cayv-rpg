@@ -13,4 +13,8 @@ bool init() {
     return true;
 }
 
+void cleanup() {
+    SDL_Quit();
+}
+
 }

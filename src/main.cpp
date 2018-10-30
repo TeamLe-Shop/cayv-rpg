@@ -102,5 +102,7 @@ int main()
     g.SetScene("test");
     g.Cycle();
 
+    cleanup();
+
     return 0;
 }

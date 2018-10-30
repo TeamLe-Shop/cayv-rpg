@@ -3,5 +3,6 @@
 namespace cayv {
 
 bool init();
+void cleanup();
 
 }
