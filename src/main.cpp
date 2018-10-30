@@ -79,7 +79,7 @@ int main()
     if (Mix_Init(MIX_INIT_MOD) != MIX_INIT_MOD) {
         std::cerr << "Mix_Init fail, yet still twerks... Ok." << std::endl;
     }
-    if (Mix_OpenAudio(44100, AUDIO_F32, 2, 4096) != 0) {
+    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) != 0) {
         std::cerr << "HOLY SHIT, CAN'T OPEN AUDIO! BAIL!" << std::endl;
         return 1;
     }
