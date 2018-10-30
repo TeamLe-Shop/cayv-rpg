@@ -5,6 +5,7 @@
 #include "window.hpp"
 #include "game.hpp"
 #include "scene.hpp"
+#include "init.hpp"
 
 #include <iostream>
 
@@ -73,7 +74,10 @@ private:
 
 int main()
 {
-    Window* w = new Window("Simmer softly something's boilin", 640, 480, false, 320, 240);
+    if (!init()) {
+        return 1;
+    }
+    Window w("Simmer softly something's boilin", 640, 480, false, 320, 240);
 
     if (Mix_Init(MIX_INIT_MOD) != MIX_INIT_MOD) {
         std::cerr << "Mix_Init fail, yet still twerks... Ok." << std::endl;
@@ -93,7 +97,7 @@ int main()
         return 1;
     }
 
-    Game g(w);
+    Game g(&w);
     g.AddScene(new AutismoFields("test", &g));
     g.SetScene("test");
     g.Cycle();
