@@ -10,7 +10,7 @@ class Window;
 
 class Game {
 public:
-    Game(Window* w);
+    explicit Game(Window* w);
 
     void AddScene(Scene* s);
     void SetScene(std::string name);
