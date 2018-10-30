@@ -20,7 +20,7 @@ public:
 private:
     SDL_Texture * tex;
     Pos scpos = {196, 134};
-    Mix_Music* mus = Mix_LoadMUS("autismofields.xm");
+    Mix_Music* mus = Mix_LoadMUS("res/autismofields.xm");
 };
 
 }
