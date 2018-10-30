@@ -27,7 +27,6 @@ Window::Window(std::string title, int w, int h, bool fullscreen) :
         exit(1);
     }
     SDL_SetWindowTitle(sdlwin, title.c_str());
-    SDL_RenderSetLogicalSize(renderer, w, h);
 }
 
 Window::Window(std::string title, int w, int h, bool fulls, int rw, int rh)
