@@ -6,11 +6,13 @@
 #include "init.hpp"
 #include "log.hpp"
 #include "scenes/autismofields.hpp"
+#include "format.h"
 
 using namespace cayv;
 
 int main()
 {
+    fmt::print("It's a good day to die");
     if (!init()) {
         return 1;
     }
