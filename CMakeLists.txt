@@ -19,8 +19,7 @@ if(USING_GCC OR USING_CLANG OR OSX)
 endif()
 
 if(USING_GCC OR USING_CLANG OR OSX)
-    add_compile_options(-pedantic -Wall -Wextra -Wmissing-declarations
-                        -Wnon-virtual-dtor)
+    add_compile_options(-pedantic -Wall -Wextra -Wnon-virtual-dtor)
 endif()
 
 if(OSX)
