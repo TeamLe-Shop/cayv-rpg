@@ -17,11 +17,11 @@ constexpr Pos flowers[] = {
 AutismoFields::AutismoFields(std::string name, Game* g) : Scene(name, g) {
     tex = IMG_LoadTexture(g->window->renderer, "res/gfx_desu.png");
     if (tex == nullptr) {
-        log(SEVERE, "HOLY SHIT, FAILED TO LOAD THE TEXTURE! ABORT!");
+        log(SEVERE, "Couldn't load texture from res/gfx_desu.png");
         abort();
     }
     if (mus == NULL) {
-        log(SEVERE, "Music load fail");
+        log(SEVERE, "Failed to load music from res/autismofields.xm");
         exit(1);
     }
     Mix_PlayMusic(mus, -1);

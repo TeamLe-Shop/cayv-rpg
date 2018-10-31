@@ -2,12 +2,17 @@
 
 #include <string>
 
+#define CAYV_LOGLEVEL DEBUG
+#define CAYV_BADFORMATV "formatv: error"
+
 namespace cayv {
 
-const std::string INFO = "INFO";
-const std::string WARN = "WARN";
-const std::string SEVERE = "SEVERE";
+enum LogLevel {
+    DEBUG = 0, INFO = 1, WARN = 2, SEVERE = 3
+};
 
-void log(std::string loglevel, std::string fmt, ...);
+std::string formatv(std::string fmt, va_list v);
+
+void log(LogLevel l, std::string fmt, ...);
 
 }

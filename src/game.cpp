@@ -49,7 +49,7 @@ void Game::SetScene(std::string name)
     }
 
     if (x == nullptr) {
-        log(WARN, "Attempted to switch to invalid state '%s'", name.c_str());
+        log(WARN, "Attempted to switch to invalid state {S}", name.c_str());
         return;
     }
 
