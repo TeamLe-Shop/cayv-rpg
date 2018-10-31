@@ -6,11 +6,13 @@
 #include "init.hpp"
 #include "log.hpp"
 #include "scenes/autismofields.hpp"
+#include "fmt/core.h"
 
 using namespace cayv;
 
 int main()
 {
+    fmt::print("The answer is {}.\n", 42);
     if (!init()) {
         return 1;
     }
