@@ -23,7 +23,7 @@ Window::Window(std::string title, int w, int h, bool fullscreen) :
 
     SDL_CreateWindowAndRenderer(w, h, flags, &sdlwin, &renderer);
     if (sdlwin == nullptr || renderer == nullptr) {
-        log(SEVERE, "Failed to create window/renderer: {S}", SDL_GetError());
+        log(SEVERE, "Failed to create window/renderer: {}", SDL_GetError());
         exit(1);
     }
     SDL_SetWindowTitle(sdlwin, title.c_str());

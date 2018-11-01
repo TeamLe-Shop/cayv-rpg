@@ -9,7 +9,7 @@ namespace cayv {
 
 bool init() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        log(SEVERE, "Failed to init SDL: {S}", SDL_GetError());
+        log(SEVERE, "Failed to init SDL: {}", SDL_GetError());
         return false;
     }
     if (Mix_Init(MIX_INIT_MOD) != MIX_INIT_MOD) {
