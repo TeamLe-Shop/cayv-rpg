@@ -10,7 +10,7 @@ endif()
 
 # For GCC and Clang, enable C++14
 if(USING_GCC OR USING_CLANG OR OSX)
-  add_compile_options(-std=c++14)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
   if(SANITIZE)
     add_compile_options(-fsanitize=${SANITIZE})
     set(CMAKE_EXE_LINKER_FLAGS
@@ -52,6 +52,8 @@ add_library(microtar STATIC extlib/microtar/microtar.c)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_executable(cayv src/main.cpp src/window.cpp src/game.cpp
-                    src/scene.cpp src/init.cpp src/scenes/autismofields.cpp)
+                    src/scene.cpp src/init.cpp src/scenes/autismofields.cpp
+                    src/util.cpp src/resource.cpp)
 
-target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} fmt)
+target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY}
+                      ${SDLIMAGE_LIBRARY} fmt microtar)

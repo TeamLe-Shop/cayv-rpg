@@ -7,6 +7,7 @@
 #include "log.hpp"
 #include "scenes/autismofields.hpp"
 #include "format.h"
+#include "resource.hpp"
 
 using namespace cayv;
 
@@ -15,6 +16,8 @@ int main()
     if (!init()) {
         return 1;
     }
+
+    resource::Bundle b("base", "testbundle.tar", resource::BASE);
 
     // New scope to run shit to make sure the destructors run
     {

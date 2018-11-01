@@ -4,7 +4,6 @@
 #include "format.h"
 
 #define CAYV_LOGLEVEL DEBUG
-#define CAYV_BADFORMATV "formatv: error"
 
 namespace cayv {
 
