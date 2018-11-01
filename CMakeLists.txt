@@ -45,6 +45,8 @@ include_directories(${SDLIMAGE_INCLUDE_DIR})
 # Vendored extlibs
 include_directories(extlib/fmt)
 add_library(fmt STATIC extlib/fmt/format.cc)
+include_directories(extlib/microtar)
+add_library(microtar STATIC extlib/microtar/microtar.c)
 
 # We wanna include "kek.hpp" instead of "../../../kek.hpp" when we're in the deep
 include_directories(${CMAKE_SOURCE_DIR}/src)

@@ -5,6 +5,10 @@ Poor man's 2d top-down RPG written in C++ using SDL.
 Required libraries: SDL2, SDL2\_image, SDL2\_mixer
 Built using CMake (minimum version 3.1).
 
+All other libraries are in `extlib/` and will automatically be built:
+- fmtlib - [https://github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)
+- microtar - [https://github.com/rxi/microtar](https://github.com/rxi/microtar)
+
 ## Build Instructions (Linux/OSX)
 
 Creating an external build directory is recommended.
