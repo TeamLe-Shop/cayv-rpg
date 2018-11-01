@@ -13,7 +13,7 @@ enum LogLevel {
 };
 
 template <typename... Args>
-void log(LogLevel l, std::string fmt, const Args&... args)
+void log(LogLevel l, std::string fmt, Args&&... args)
 {
     if (l < CAYV_LOGLEVEL) return;
 
@@ -34,9 +34,9 @@ void log(LogLevel l, std::string fmt, const Args&... args)
         break;
     }
 
-    std::string msg = fmt::format(fmt, args...);
+    std::string msg = fmt::format(fmt, std::forward<Args>(args)...);
 
-    fmt::print(stderr, "[{}] {}", p, msg);
+    fmt::print(stderr, "[{}] {}\n", p, msg);
 }
 
 }
