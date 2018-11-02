@@ -47,6 +47,9 @@ void Window::Draw(Scene* s)
     // Make it a fugly magenta so areas where the scene doesn't render anything are noticeable.
     SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
     SDL_RenderClear(renderer);
+    // Also set default render color to white, so scenes always render with white by default,
+    // until they explicitly set another color.
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     s->Draw();
     SDL_RenderPresent(renderer);
 }
