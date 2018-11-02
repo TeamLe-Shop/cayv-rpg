@@ -34,13 +34,8 @@ void TileSandbox::Draw() {
     SDL_SetTextureAlphaMod(tex, 196);
     SDL_RenderCopy(ren, tex, &txsrcrect, &rect);
     SDL_SetTextureAlphaMod(tex, 255);
-    int g = 255, b = 255;
-    if (tileToPut == 0) {
-        g = 0;
-        b = 0;
-    }
     SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
-    SDL_SetRenderDrawColor(ren, 255, g, b, 48);
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, 48);
     SDL_RenderDrawRect(ren, &rect);
 }
 
@@ -51,6 +46,8 @@ void TileSandbox::Logic() {
     tcy = my / 64;
     if (button & SDL_BUTTON(SDL_BUTTON_LEFT)) {
         tileAt(currentLayer, tcx, tcy) = tileToPut;
+    } else if (button & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
+        tileAt(currentLayer, tcx, tcy) = 0;
     }
 }
 
@@ -58,7 +55,7 @@ void TileSandbox::OnEvent(SDL_Event& e) {
     if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) {
             case SDLK_LEFT:
-                if (tileToPut > 0) {
+                if (tileToPut > 1) {
                     tileToPut -= 1;
                 }
                 break;
