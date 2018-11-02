@@ -54,6 +54,10 @@ void Window::Draw(Scene* s)
     SDL_RenderPresent(renderer);
 }
 
+void Window::SetTitle(std::string title) {
+    SDL_SetWindowTitle(sdlwin, title.c_str());
+}
+
 Window::~Window()
 {
     SDL_DestroyRenderer(renderer);
