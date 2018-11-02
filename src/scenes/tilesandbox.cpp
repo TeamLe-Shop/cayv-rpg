@@ -57,13 +57,22 @@ void TileSandbox::Logic() {
 void TileSandbox::OnEvent(SDL_Event& e) {
     if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) {
-            case SDLK_LEFT: tileToPut -= 1;
+            case SDLK_LEFT:
+                if (tileToPut > 0) {
+                    tileToPut -= 1;
+                }
                 break;
             case SDLK_RIGHT: tileToPut += 1;
                 break;
-            case SDLK_UP: currentLayer -= 1;
+            case SDLK_UP:
+                if (currentLayer > 0) {
+                    currentLayer -= 1;
+                }
                 break;
-            case SDLK_DOWN: currentLayer += 1;
+            case SDLK_DOWN:
+                if (currentLayer < LAYERS - 1) {
+                    currentLayer += 1;
+                }
                 break;
             case SDLK_r:
                 SDL_DestroyTexture(tex);
