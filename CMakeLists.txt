@@ -52,7 +52,9 @@ add_library(microtar STATIC extlib/microtar/microtar.c)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_executable(cayv src/main.cpp src/window.cpp src/game.cpp
-                    src/scene.cpp src/init.cpp src/scenes/autismofields.cpp
+                    src/scene.cpp src/init.cpp
+                    src/scenes/autismofields.cpp
+                    src/scenes/tilesandbox.cpp
                     src/util.cpp src/resource.cpp)
 
 target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY}
