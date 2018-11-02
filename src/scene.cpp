@@ -8,6 +8,7 @@ Scene::~Scene() {}
 
 void Scene::OnEnter() {}
 void Scene::OnLeave() {}
+void Scene::OnEvent(SDL_Event& e) {}
 
 
 void Scene::Draw() {}

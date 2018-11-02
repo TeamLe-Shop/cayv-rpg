@@ -22,6 +22,7 @@ void Game::Cycle()
         Uint32 st = SDL_GetTicks();
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
+            currentscene->OnEvent(e);
             if (e.type == SDL_QUIT) quit = true;
         }
         window->Draw(currentscene);

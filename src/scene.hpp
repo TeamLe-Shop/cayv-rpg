@@ -2,6 +2,7 @@
 
 #include <string>
 #include "game.hpp"
+#include "SDL.h"
 
 namespace cayv {
 
@@ -12,6 +13,7 @@ public:
 
     virtual void OnEnter();
     virtual void OnLeave();
+    virtual void OnEvent(SDL_Event& event);
 
     virtual void Draw();
     virtual void Logic();
