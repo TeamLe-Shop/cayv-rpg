@@ -42,6 +42,10 @@ Window::Window(std::string title, int w, int h, bool fulls, int rw, int rh)
 
 void Window::Draw(Scene* s)
 {
+    // Always set clear color explicitly, so that whatever render color
+    // the various scenes draw shit with don't override this clear color.
+    // Make it a fugly magenta so areas where the scene doesn't render anything are noticeable.
+    SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
     SDL_RenderClear(renderer);
     s->Draw();
     SDL_RenderPresent(renderer);
