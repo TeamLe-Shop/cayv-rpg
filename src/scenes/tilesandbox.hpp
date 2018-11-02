@@ -9,6 +9,7 @@ namespace cayv {
 
 constexpr int W = 10;
 constexpr int H = 10;
+const int LAYERS = 3;
 
 class TileSandbox : public Scene
 {
@@ -19,14 +20,16 @@ public:
     void Logic() override;
     void OnEvent(SDL_Event& e) override;
 private:
-    uint8_t & tileAt(int x, int y);
+    uint8_t & tileAt(int layer, int x, int y);
     void drawTiles();
     SDL_Texture * tex;
     // Tile cursor x/y
     int tcx = 0, tcy = 0;
     // Tile to pu
     int tileToPut = 1;
-    uint8_t tiles[W * H] = {};
+    // Current layer
+    int currentLayer = 0;
+    uint8_t tiles[W * H * LAYERS] = {};
 };
 
 }

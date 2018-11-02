@@ -44,38 +44,46 @@ void TileSandbox::Logic() {
     tcx = mx / 64;
     tcy = my / 64;
     if (button & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-        tileAt(tcx, tcy) = tileToPut;
+        tileAt(currentLayer, tcx, tcy) = tileToPut;
     }
 }
 
 void TileSandbox::OnEvent(SDL_Event& e) {
     if (e.type == SDL_KEYDOWN) {
-        if (e.key.keysym.sym == SDLK_LEFT) {
-            tileToPut -= 1;
-        } else if (e.key.keysym.sym == SDLK_RIGHT) {
-            tileToPut += 1;
+        switch (e.key.keysym.sym) {
+            case SDLK_LEFT: tileToPut -= 1;
+                break;
+            case SDLK_RIGHT: tileToPut += 1;
+                break;
+            case SDLK_UP: currentLayer -= 1;
+                break;
+            case SDLK_DOWN: currentLayer += 1;
+                break;
         }
+        game->window->SetTitle(fmt::format("Layer {}", currentLayer));
     }
 }
 
-uint8_t & TileSandbox::tileAt(int x, int y) {
-    if (x >= W || y >= H) {
+uint8_t & TileSandbox::tileAt(int layer, int x, int y) {
+    if (layer >= LAYERS || x >= W || y >= H) {
         log(SEVERE, "OOB ACCESS");
         abort();
     }
-    return tiles[y * W + x];
+    return tiles[(layer * (W * H)) + (y * W + x)];
 }
 
 void TileSandbox::drawTiles() {
-    for (int y = 0; y < H; y++) {
-        for (int x = 0; x < W; x++) {
-            auto t = tileAt(x, y);
-            if (t == 0) {
-                continue;
+    for (int l = 0; l < LAYERS; l++) {
+        for (int y = 0; y < H; y++) {
+            for (int x = 0; x < W; x++) {
+                auto t = tileAt(l, x, y);
+                if (t == 0) {
+                    continue;
+                }
+                SDL_Rect src = tileIdToRect(t);
+                SDL_Rect dst = {x * 32, y * 32, 32, 32};
+                SDL_RenderCopy(game->window->renderer, tex, &src, &dst);
             }
-            SDL_Rect src = tileIdToRect(t);
-            SDL_Rect dst = {x * 32, y * 32, 32, 32};
-            SDL_RenderCopy(game->window->renderer, tex, &src, &dst);
         }
     }
 }
