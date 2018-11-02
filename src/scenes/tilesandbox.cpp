@@ -34,7 +34,12 @@ void TileSandbox::Draw() {
     SDL_SetTextureAlphaMod(tex, 196);
     SDL_RenderCopy(ren, tex, &txsrcrect, &rect);
     SDL_SetTextureAlphaMod(tex, 255);
-    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    int g = 255, b = 255;
+    if (tileToPut == 0) {
+        g = 0;
+        b = 0;
+    }
+    SDL_SetRenderDrawColor(ren, 255, g, b, 255);
     SDL_RenderDrawRect(ren, &rect);
 }
 
