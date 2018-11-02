@@ -39,7 +39,8 @@ void TileSandbox::Draw() {
         g = 0;
         b = 0;
     }
-    SDL_SetRenderDrawColor(ren, 255, g, b, 255);
+    SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(ren, 255, g, b, 48);
     SDL_RenderDrawRect(ren, &rect);
 }
 
