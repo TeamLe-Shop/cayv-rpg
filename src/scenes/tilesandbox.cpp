@@ -48,6 +48,11 @@ void TileSandbox::Logic() {
         tileAt(currentLayer, tcx, tcy) = tileToPut;
     } else if (button & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
         tileAt(currentLayer, tcx, tcy) = 0;
+    } else if (button & SDL_BUTTON(SDL_BUTTON_MIDDLE)) {
+        auto tile = tileAt(currentLayer, tcx, tcy);
+        if (tile != 0) {
+            tileToPut = tile;
+        }
     }
 }
 
