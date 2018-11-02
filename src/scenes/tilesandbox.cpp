@@ -64,6 +64,10 @@ void TileSandbox::OnEvent(SDL_Event& e) {
                 break;
             case SDLK_DOWN: currentLayer += 1;
                 break;
+            case SDLK_r:
+                SDL_DestroyTexture(tex);
+                tex = IMG_LoadTexture(game->window->renderer, "res/gfx_desu.png");
+                break;
         }
         game->window->SetTitle(fmt::format("Layer {}", currentLayer));
     }
