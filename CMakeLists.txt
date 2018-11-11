@@ -51,9 +51,12 @@ add_library(microtar STATIC extlib/microtar/microtar.c)
 # We wanna include "kek.hpp" instead of "../../../kek.hpp" when we're in the deep
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-add_executable(cayv src/main.cpp src/window.cpp src/game.cpp
-                    src/scene.cpp src/init.cpp src/scenes/autismofields.cpp
-                    src/util.cpp src/resource.cpp src/vector.cpp)
+add_executable(cayv src/scene.cpp src/init.cpp
+                    src/scenes/autismofields.cpp
+                    src/scenes/tilesandbox.cpp
+                    src/util.cpp src/resource.cpp
+                    src/vector.cpp src/window.cpp
+                    src/game.cpp src/main.cpp)
 
 target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY}
                       ${SDLIMAGE_LIBRARY} fmt microtar)

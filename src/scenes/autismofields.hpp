@@ -4,12 +4,9 @@
 
 #include "SDL.h"
 #include "SDL_mixer.h"
+#include "vector.hpp"
 
 namespace cayv {
-
-struct Pos {
-    int x, y;
-};
 
 class AutismoFields : public Scene
 {
@@ -20,8 +17,9 @@ public:
     void Logic() override;
 private:
     SDL_Texture * tex;
-    Pos scpos = {196, 134};
+    Vector2f scpos = Vector2f(196, 134);
     Mix_Music* mus = Mix_LoadMUS("res/autismofields.xm");
+    bool smileydance = false;
 };
 
 }

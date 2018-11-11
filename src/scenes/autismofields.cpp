@@ -3,15 +3,16 @@
 #include "SDL_image.h"
 #include "log.hpp"
 #include "window.hpp"
+#include "vector.hpp"
 
 namespace cayv {
 
-constexpr Pos flowers[] = {
-    {3, 5},
-    {9, 4},
-    {2, 3},
-    {5, 3},
-    {1, 1},
+Vector2f flowers[] = {
+    Vector2f(3, 5),
+    Vector2f(2, 3),
+    Vector2f(4, 9),
+    Vector2f(0, 1),
+    Vector2f(1, 1),
 };
 
 AutismoFields::AutismoFields(std::string name, Game* g) : Scene(name, g) {
@@ -43,28 +44,46 @@ void AutismoFields::Draw() {
             SDL_RenderCopy(ren, tex, &grass, &dst);
         }
     }
-    SDL_Rect dst = {scpos.x, scpos.y, 32, 32};
+    SDL_Rect dst = {(int)scpos.x, (int)scpos.y, 32, 32};
     SDL_RenderCopy(ren, tex, &smileychan, &dst);
     for (auto f : flowers) {
-        SDL_Rect dst = {f.x * 32, f.y * 32, 32, 32};
+        SDL_Rect dst = {(int)f.x * 32, (int)f.y * 32, 32, 32};
         SDL_RenderCopy(ren, tex, &flower, &dst);
     }
 }
 
 void AutismoFields::Logic() {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
-    if (state[SDL_SCANCODE_LEFT]) {
-        scpos.x -= 2;
+    Uint32 t = SDL_GetTicks();
+    Vector2f speed(0, 0);
+    if (!smileydance) {
+        if (state[SDL_SCANCODE_LEFT]) {
+            speed.x -= 1;
+        }
+        if (state[SDL_SCANCODE_RIGHT]) {
+            speed.x += 1;
+        }
+        if (state[SDL_SCANCODE_UP]) {
+            speed.y -= 1;
+        }
+        if (state[SDL_SCANCODE_DOWN]) {
+            speed.y += 1;
+        }
+
+        if (state[SDL_SCANCODE_T]) {
+            smileydance = true;
+        }
+
+        scpos = scpos + (speed.normalise() * 2);
+    } else {
+        if (state[SDL_SCANCODE_F]) {
+            smileydance = false;
+        }
+
+        scpos = Vector2f(100, 100) + Vector2f(0, 50).rotateby(t / 200.f);
+
     }
-    if (state[SDL_SCANCODE_RIGHT]) {
-        scpos.x += 2;
-    }
-    if (state[SDL_SCANCODE_UP]) {
-        scpos.y -= 2;
-    }
-    if (state[SDL_SCANCODE_DOWN]) {
-        scpos.y += 2;
-    }
+
 }
 
 }
