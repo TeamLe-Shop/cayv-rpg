@@ -53,7 +53,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_executable(cayv src/main.cpp src/window.cpp src/game.cpp
                     src/scene.cpp src/init.cpp src/scenes/autismofields.cpp
-                    src/util.cpp src/resource.cpp)
+                    src/util.cpp src/resource.cpp src/vector.cpp)
 
 target_link_libraries(cayv ${SDL2_LIBRARY} ${SDLMIXER_LIBRARY}
                       ${SDLIMAGE_LIBRARY} fmt microtar)
